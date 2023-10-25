@@ -1,0 +1,37 @@
+.circle {
+  position: absolute;
+  width: 530px;
+  height: 530px;
+  border-radius: 9999px;
+  border: 1px solid #42567a1a;
+  margin-top: 215px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circleCentre {
+  position: relative;
+  width: 0;
+  height: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rotate {
+  transition: all 0.7s ease-in-out;
+}
+
+.test {
+  transition: all 0.7s ease-in-out;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background-color: #42567a;
+}
