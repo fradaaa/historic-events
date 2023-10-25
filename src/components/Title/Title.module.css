@@ -1,0 +1,25 @@
+.titleWrapper {
+  position: absolute;
+  top: 170px;
+  left: -1px;
+  display: flex;
+  align-items: center;
+}
+
+.titleGradientLine {
+  width: 5px;
+  height: 120px;
+  margin-right: 76px;
+  background: linear-gradient(rgb(56, 119, 238) 0%, rgb(239, 93, 168) 100%);
+}
+
+.titleText {
+  color: #42567a;
+  font-family: PT Sans;
+  font-size: 56px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%;
+  width: 350px;
+  margin: 0;
+}
