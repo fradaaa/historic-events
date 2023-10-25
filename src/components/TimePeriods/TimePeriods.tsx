@@ -1,6 +1,7 @@
 import { useState, CSSProperties } from "react";
 import styles from "./TimePeriod.module.css";
 import { getCoords } from "../../utils/getCoords";
+import PeriodItem from "./PeriodItem";
 
 type TimePeriodsProps = {
   periodsCount?: number;
@@ -36,7 +37,7 @@ const TimePeriods = ({ periodsCount = 6 }: TimePeriodsProps) => {
 
             return (
               <div key={i} style={style} className={styles.test}>
-                <div className={styles.dot}></div>
+                <PeriodItem order={i + 1} text="Period" />
               </div>
             );
           })}
