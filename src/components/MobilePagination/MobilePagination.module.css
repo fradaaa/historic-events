@@ -1,0 +1,43 @@
+.paginationWrapper {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  transform: translateX(-50%);
+}
+
+.button {
+  border: none;
+  border-radius: 50%;
+  width: 11px;
+  height: 11px;
+  cursor: pointer;
+  background: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+
+  & div {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #42567a;
+    opacity: 0.4;
+    transition: opacity 0.3s ease-in-out;
+  }
+}
+
+.selected {
+  & div {
+    opacity: 1;
+  }
+}
+
+@media (min-width: 400px) {
+  .paginationWrapper {
+    display: none;
+  }
+}
