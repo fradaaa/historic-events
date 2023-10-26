@@ -1,5 +1,4 @@
 import { CSSProperties, useState } from "react";
-import { TimeSlice } from "../../sampleData";
 import { getCoords } from "../../utils/getCoords";
 import PeriodItem from "./PeriodItem";
 import styles from "./TimePeriod.module.css";

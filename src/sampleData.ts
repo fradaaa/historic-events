@@ -1,15 +1,3 @@
-export type TimeSlice = {
-  startYear: number;
-  endYear: number;
-  title: string;
-  events: TimeSliceEvent[];
-};
-
-type TimeSliceEvent = {
-  year: number;
-  eventDetails: string;
-};
-
 export const data: TimeSlice[] = [
   {
     startYear: 1983,
