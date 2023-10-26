@@ -83,7 +83,7 @@ const App = () => {
       />
       <div className={styles.events}>
         <Fade show={showEvents}>
-          <EventsSlider events={debEvents} />
+          <EventsSlider events={debEvents} spaceBetween={80} />
         </Fade>
       </div>
       <MobilePagination

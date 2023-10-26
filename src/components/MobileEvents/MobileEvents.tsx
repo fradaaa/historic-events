@@ -15,7 +15,7 @@ const MobileEvents = ({ title, show, events }: MobileEventsProps) => {
         <div className={styles.titleWrapper}>
           <p className={styles.title}>{title}</p>
         </div>
-        <EventsSlider events={events} slidesPerView={1.5} />
+        <EventsSlider events={events} spaceBetween={25} slidesPerView={1.5} />
       </Fade>
     </div>
   );

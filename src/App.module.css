@@ -30,7 +30,7 @@
 
 .events {
   position: absolute;
-  bottom: 104px;
+  top: 841px;
 }
 
 @media (max-width: 400px) {

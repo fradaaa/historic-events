@@ -6,6 +6,7 @@ import SliderButton from "./SliderButton";
 
 type EventsSliderProps = {
   events: TimeSliceEvent[];
+  spaceBetween: number;
   slidesPerView?: number;
 };
 
@@ -14,7 +15,11 @@ type SwiperRef = HTMLElement & {
   swiper: Swiper;
 };
 
-const EventsSlider = ({ events, slidesPerView = 3 }: EventsSliderProps) => {
+const EventsSlider = ({
+  events,
+  spaceBetween,
+  slidesPerView = 3,
+}: EventsSliderProps) => {
   const swiperRef = useRef<SwiperRef>(null);
   const swiperInstanceRef = useRef<Swiper | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -22,8 +27,13 @@ const EventsSlider = ({ events, slidesPerView = 3 }: EventsSliderProps) => {
   useEffect(() => {
     register();
 
+    const params = {
+      slidesPerView,
+      spaceBetween,
+    };
+
     if (swiperRef.current) {
-      Object.assign(swiperRef.current, { slidesPerView });
+      Object.assign(swiperRef.current, params);
 
       swiperRef.current.initialize();
       swiperInstanceRef.current = swiperRef.current.swiper;
