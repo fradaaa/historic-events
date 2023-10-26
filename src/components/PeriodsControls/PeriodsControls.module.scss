@@ -1,0 +1,55 @@
+.controlsWrapper {
+  position: absolute;
+  left: 80px;
+  bottom: 295px;
+}
+
+.controlsState {
+  color: #42567A;
+  font-size: 14px;
+  line-height: normal;
+}
+
+.buttonsWraper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.button {
+  border: none;
+  background: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  padding: 0;
+
+  & svg {
+    transition: fill .3s ease-in-out;
+  }
+
+  &:hover svg {
+    fill: #fff;
+  }
+
+  &:disabled {
+    opacity: 0;
+    cursor: not-allowed;
+  }
+
+  &:last-of-type {
+    transform: rotateY(180deg);
+  }
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
