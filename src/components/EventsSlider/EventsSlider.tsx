@@ -9,24 +9,24 @@ type EventsSliderProps = {
   slidesPerView?: number;
 };
 
+type SwiperRef = HTMLElement & {
+  initialize: () => void;
+  swiper: Swiper;
+};
+
 const EventsSlider = ({ events, slidesPerView = 3 }: EventsSliderProps) => {
-  // eslint-disable-next-line
-  const swiperRef = useRef<any>(null);
+  const swiperRef = useRef<SwiperRef>(null);
   const swiperInstanceRef = useRef<Swiper | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
     register();
 
-    const params = {
-      slidesPerView,
-    };
-
-    Object.assign(swiperRef.current, params);
-
     if (swiperRef.current) {
+      Object.assign(swiperRef.current, { slidesPerView });
+
       swiperRef.current.initialize();
-      swiperInstanceRef.current = swiperRef.current.swiper as Swiper;
+      swiperInstanceRef.current = swiperRef.current.swiper;
 
       swiperInstanceRef.current.on("activeIndexChange", (e: Swiper) => {
         setActiveIndex(e.activeIndex);
