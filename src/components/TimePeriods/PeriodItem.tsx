@@ -20,7 +20,7 @@ const PeriodItem = ({
   return (
     <div className={itemClassName} onClick={() => rotateTo(order)}>
       <div className={styles.periodDot}></div>
-      <span className={styles.periodItemOrder}>{order}</span>
+      <span className={styles.periodItemOrder}>{order + 1}</span>
       <p className={styles.periodItemText}>{text}</p>
     </div>
   );

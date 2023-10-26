@@ -1,25 +1,24 @@
-import { useState, CSSProperties } from "react";
-import styles from "./TimePeriod.module.css";
+import { CSSProperties, useState } from "react";
+import { TimeSlice } from "../../sampleData";
 import { getCoords } from "../../utils/getCoords";
 import PeriodItem from "./PeriodItem";
+import styles from "./TimePeriod.module.css";
 
 type TimePeriodsProps = {
-  periodsCount?: number;
+  selectedPeriod: number;
+  angleBetween: number;
+  rotateAngle: number;
+  periods: TimeSlice[];
+  rotateTo: (order: number) => void;
 };
 
-const defaultAngle = 120;
-
-const TimePeriods = ({ periodsCount = 6 }: TimePeriodsProps) => {
-  const [rotateAngle, setRotateAngle] = useState(defaultAngle);
-  const [selectedPeriod, setSelectedPeriod] = useState(1);
-
-  const angleBetween = 360 / periodsCount;
-
-  const rotateTo = (order: number) => {
-    setRotateAngle(120 - (order - 1) * angleBetween);
-    setSelectedPeriod(order);
-  };
-
+const TimePeriods = ({
+  selectedPeriod,
+  angleBetween,
+  rotateAngle,
+  periods,
+  rotateTo,
+}: TimePeriodsProps) => {
   const counterAngle = (angle: number) =>
     angle > 0 ? `-${angle}` : Math.abs(angle);
 
@@ -32,7 +31,7 @@ const TimePeriods = ({ periodsCount = 6 }: TimePeriodsProps) => {
         }}
       >
         <div className={styles.circleCentre}>
-          {new Array(periodsCount).fill("").map((_, i) => {
+          {periods.map(({ title }, i) => {
             const [x, y] = getCoords(angleBetween * i);
             const style: CSSProperties = {
               transform: `translate(${-x}px, ${-y}px) rotate(${counterAngle(
@@ -43,8 +42,8 @@ const TimePeriods = ({ periodsCount = 6 }: TimePeriodsProps) => {
             return (
               <div key={i} style={style} className={styles.itemWrapper}>
                 <PeriodItem
-                  order={i + 1}
-                  text="Period"
+                  order={i}
+                  text={title}
                   selectedPeriod={selectedPeriod}
                   rotateTo={rotateTo}
                 />

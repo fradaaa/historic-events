@@ -7,18 +7,29 @@ import Title from "./components/Title/Title";
 import { data } from "./sampleData";
 
 const App = () => {
-  const [selectedTime, setSelectedTime] = useState(0);
+  const defaultAngle = 120;
+  const angleBetween = 360 / data.length;
+
+  const [selectedPeriod, setSelectedPeriod] = useState(0);
+  const [rotateAngle, setRotateAngle] = useState(defaultAngle);
+
+  const rotateTo = (order: number) => {
+    setRotateAngle(defaultAngle - order * angleBetween);
+    setSelectedPeriod(order);
+  };
 
   const nextPeriod = () => {
-    if (selectedTime + 1 === data.length) return;
+    if (selectedPeriod + 1 === data.length) return;
 
-    setSelectedTime(selectedTime + 1);
+    setSelectedPeriod(selectedPeriod + 1);
+    setRotateAngle(defaultAngle - (selectedPeriod + 1) * angleBetween);
   };
 
   const prevPeriod = () => {
-    if (selectedTime === 0) return;
+    if (selectedPeriod === 0) return;
 
-    setSelectedTime(selectedTime - 1);
+    setSelectedPeriod(selectedPeriod - 1);
+    setRotateAngle(defaultAngle - (selectedPeriod - 1) * angleBetween);
   };
 
   return (
@@ -26,9 +37,15 @@ const App = () => {
       <div className={styles.vLine}></div>
       <div className={styles.hLine}></div>
       <Title />
-      <TimePeriods />
+      <TimePeriods
+        selectedPeriod={selectedPeriod}
+        angleBetween={angleBetween}
+        rotateAngle={rotateAngle}
+        periods={data}
+        rotateTo={rotateTo}
+      />
       <PeriodsControls
-        currentPeriod={selectedTime}
+        currentPeriod={selectedPeriod}
         maxPeriods={data.length}
         prevPeriod={prevPeriod}
         nextPeriod={nextPeriod}
