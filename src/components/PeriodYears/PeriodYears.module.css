@@ -1,0 +1,12 @@
+.yearsWrapper {
+  position: absolute;
+  top: 400px;
+  display: flex;
+  z-index: -5;
+  pointer-events: none;
+  color: #5d5fef;
+  font-size: 200px;
+  font-weight: 700;
+  line-height: 160px;
+  letter-spacing: -4px;
+}
