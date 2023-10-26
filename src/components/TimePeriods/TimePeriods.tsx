@@ -1,4 +1,4 @@
-import { CSSProperties, useState } from "react";
+import { CSSProperties } from "react";
 import { getCoords } from "../../utils/getCoords";
 import PeriodItem from "./PeriodItem";
 import styles from "./TimePeriod.module.css";
