@@ -5,7 +5,7 @@ export const data: TimeSlice[] = [
     title: "Literature",
     events: [
       { year: 1983, eventDetails: "Lorem ipsum dolor sit amet." },
-      { year: 1985, eventDetails: "Lorem ipsum dolor sit amet." },
+      { year: 1984, eventDetails: "Lorem ipsum dolor sit amet." },
       { year: 1985, eventDetails: "Lorem ipsum dolor sit amet." },
       { year: 1986, eventDetails: "Lorem ipsum dolor sit amet." },
       { year: 1987, eventDetails: "Lorem ipsum dolor sit amet." },

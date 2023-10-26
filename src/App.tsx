@@ -6,6 +6,7 @@ import Title from "./components/Title/Title";
 
 import { data } from "./sampleData";
 import PeriodYears from "./components/PeriodYears/PeriodYears";
+import EventsSlider from "./components/EventsSlider/EventsSlider";
 
 const App = () => {
   const defaultAngle = 120;
@@ -33,7 +34,7 @@ const App = () => {
     setRotateAngle(defaultAngle - (selectedPeriod - 1) * angleBetween);
   };
 
-  const { startYear, endYear } = data[selectedPeriod];
+  const { startYear, endYear, events } = data[selectedPeriod];
 
   return (
     <main className={styles.main}>
@@ -54,6 +55,7 @@ const App = () => {
         nextPeriod={nextPeriod}
       />
       <PeriodYears startYear={startYear} endYear={endYear} />
+      <EventsSlider events={events} />
     </main>
   );
 };
