@@ -1,26 +1,48 @@
+import { ComponentPropsWithoutRef } from "react";
 import styles from "./PeriodsControls.module.scss";
 
-const PeriodsControls = () => {
+type PeriodsControlsProps = {
+  currentPeriod: number;
+  maxPeriods: number;
+  prevPeriod: () => void;
+  nextPeriod: () => void;
+};
+
+const PeriodsControls = ({
+  currentPeriod,
+  maxPeriods,
+  prevPeriod,
+  nextPeriod,
+}: PeriodsControlsProps) => {
+  const disabledPrev = currentPeriod === 0;
+  const disabledNext = currentPeriod + 1 === maxPeriods;
+
   return (
     <div className={styles.controlsWrapper}>
       <div className={styles.controlsState}>
-        <span>06/06</span>
+        <span>
+          0{currentPeriod + 1}/0{maxPeriods}
+        </span>
       </div>
       <div className={styles.buttonsWraper}>
-        <IconButton text="previous" />
-        <IconButton text="next" />
+        <IconButton
+          text="previous"
+          disabled={disabledPrev}
+          onClick={prevPeriod}
+        />
+        <IconButton text="next" disabled={disabledNext} onClick={nextPeriod} />
       </div>
     </div>
   );
 };
 
-type IconButtonProps = {
+type IconButtonProps = ComponentPropsWithoutRef<"button"> & {
   text: string;
 };
 
-const IconButton = ({ text }: IconButtonProps) => {
+const IconButton = ({ text, ...props }: IconButtonProps) => {
   return (
-    <button type="button" className={styles.button}>
+    <button type="button" className={styles.button} {...props}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="50"
