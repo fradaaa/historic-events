@@ -17,9 +17,23 @@
   color: #42567a;
   font-family: PT Sans;
   font-size: 56px;
-  font-style: normal;
   font-weight: 700;
   line-height: 120%;
   width: 350px;
   margin: 0;
+}
+
+@media (max-width: 400px) {
+  .titleWrapper {
+    position: initial;
+  }
+
+  .titleGradientLine {
+    display: none;
+  }
+
+  .titleText {
+    font-size: 20px;
+    width: 123px;
+  }
 }

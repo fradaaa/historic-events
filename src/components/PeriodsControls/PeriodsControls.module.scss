@@ -43,14 +43,19 @@
   }
 }
 
-.srOnly {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
+@media (max-width: 400px) {
+  .controlsWrapper {
+    bottom: 15px;
+    left: 20px;
+  }
+
+  .buttonsWraper {
+    gap: 8px;
+    margin-top: 11px;
+  }
+
+  .button svg {
+    width: 25px;
+    height: 25px;
+  }
 }

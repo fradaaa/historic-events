@@ -22,13 +22,13 @@
 }
 
 .rotate {
-  transition: all 0.7s ease-in-out;
+  transition: all var(--rotate-duration) ease-in-out;
 }
 
 .itemWrapper {
   position: absolute;
   z-index: 10;
-  transition: all 0.7s ease-in-out;
+  transition: all var(--rotate-duration) ease-in-out;
 }
 
 .dot {
@@ -36,4 +36,10 @@
   height: 6px;
   border-radius: 9999px;
   background-color: #42567a;
+}
+
+@media (max-width: 400px) {
+  .circle {
+    display: none;
+  }
 }

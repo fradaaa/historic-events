@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import styles from "./App.module.css";
 import EventsSlider from "./components/EventsSlider/EventsSlider";
 import Fade from "./components/Fade/Fade";
+import MobileEvents from "./components/MobileEvents/MobileEvents";
+import MobilePagination from "./components/MobilePagination/MobilePagination";
 import PeriodYears from "./components/PeriodYears/PeriodYears";
 import PeriodsControls from "./components/PeriodsControls/PeriodsControls";
 import TimePeriods from "./components/TimePeriods/TimePeriods";
@@ -16,7 +18,7 @@ const App = () => {
   const [selectedPeriod, setSelectedPeriod] = useState(0);
   const [rotateAngle, setRotateAngle] = useState(defaultAngle);
 
-  const { startYear, endYear, events } = data[selectedPeriod];
+  const { startYear, endYear, events, title } = data[selectedPeriod];
 
   const [key, setKey] = useState(`${startYear}-${endYear}`);
 
@@ -31,6 +33,10 @@ const App = () => {
       clearTimeout(counter);
     };
   }, [startYear, endYear]);
+
+  const changeSelectedPeriod = (period: number) => {
+    setSelectedPeriod(period);
+  };
 
   const rotateTo = (order: number) => {
     setRotateAngle(defaultAngle - order * angleBetween);
@@ -52,12 +58,16 @@ const App = () => {
   };
 
   const showEvents = key === `${startYear}-${endYear}`;
+  const debEvents = useDebounce(events, 700);
+  const dbTitle = useDebounce(title, 500);
 
   return (
     <main className={styles.main}>
       <div className={styles.vLine}></div>
       <div className={styles.hLine}></div>
       <Title />
+      <PeriodYears startYear={startYear} endYear={endYear} />
+      <MobileEvents title={dbTitle} show={showEvents} events={debEvents} />
       <TimePeriods
         selectedPeriod={selectedPeriod}
         angleBetween={angleBetween}
@@ -71,12 +81,16 @@ const App = () => {
         prevPeriod={prevPeriod}
         nextPeriod={nextPeriod}
       />
-      <PeriodYears startYear={startYear} endYear={endYear} />
       <div className={styles.events}>
         <Fade show={showEvents}>
-          <EventsSlider events={useDebounce(events, 500)} />
+          <EventsSlider events={debEvents} />
         </Fade>
       </div>
+      <MobilePagination
+        currentPeriod={selectedPeriod}
+        maxPeriods={data.length}
+        changeSelectedPeriod={changeSelectedPeriod}
+      />
     </main>
   );
 };

@@ -14,3 +14,20 @@
     color: #ef5da8;
   }
 }
+
+@media (max-width: 400px) {
+  .yearsWrapper {
+    position: initial;
+    margin-top: 56px;
+    font-size: 56px;
+    line-height: normal;
+    letter-spacing: -1.12px;
+    display: flex;
+    justify-content: center;
+    color: #3877ee;
+
+    & div:last-of-type {
+      color: #f178b6;
+    }
+  }
+}

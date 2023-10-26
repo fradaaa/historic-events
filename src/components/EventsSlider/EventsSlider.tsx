@@ -6,21 +6,19 @@ import SliderButton from "./SliderButton";
 
 type EventsSliderProps = {
   events: TimeSliceEvent[];
+  slidesPerView?: number;
 };
 
-const EventsSlider = ({ events }: EventsSliderProps) => {
+const EventsSlider = ({ events, slidesPerView = 3 }: EventsSliderProps) => {
   // eslint-disable-next-line
   const swiperRef = useRef<any>(null);
   const swiperInstanceRef = useRef<Swiper | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const slidesPerView = 3;
-
   useEffect(() => {
     register();
 
     const params = {
-      spaceBetween: 80,
       slidesPerView,
     };
 
@@ -34,6 +32,7 @@ const EventsSlider = ({ events }: EventsSliderProps) => {
         setActiveIndex(e.activeIndex);
       });
     }
+    // eslint-disable-next-line
   }, []);
 
   const hidePrev = activeIndex === 0;

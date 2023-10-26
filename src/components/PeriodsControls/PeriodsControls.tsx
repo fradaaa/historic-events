@@ -65,7 +65,7 @@ const IconButton = ({ text, ...props }: IconButtonProps) => {
           strokeWidth="2"
         />
       </svg>
-      <span className={styles.srOnly}>{text}</span>
+      <span className="sr-only">{text}</span>
     </button>
   );
 };
