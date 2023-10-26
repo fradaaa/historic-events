@@ -1,0 +1,29 @@
+.wrapper {
+  width: 100%;
+}
+
+.titleWrapper {
+  border-bottom: 1px solid #c7cdd9;
+  height: 57px;
+  margin-bottom: 20px;
+  margin-top: 40px;
+}
+
+.title {
+  color: #42567a;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 30px;
+  left: calc(100% + 20px);
+}
+
+@media (min-width: 400px) {
+  .wrapper {
+    display: none;
+  }
+
+  .titleWrapper {
+    display: none;
+  }
+}
