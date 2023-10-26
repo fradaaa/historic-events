@@ -56,8 +56,8 @@ const EventsSlider = ({ events, slidesPerView = 3 }: EventsSliderProps) => {
           </swiper-slide>
         ))}
       </swiper-container>
-      <SliderButton onClick={slidePrev} hide={hidePrev} />
-      <SliderButton onClick={slideNext} hide={hideNext} />
+      <SliderButton onClick={slidePrev} hide={hidePrev} aria-label="previous" />
+      <SliderButton onClick={slideNext} hide={hideNext} aria-label="next" />
     </div>
   );
 };
