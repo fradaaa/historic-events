@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./App.module.css";
+import EventsSlider from "./components/EventsSlider/EventsSlider";
+import Fade from "./components/Fade/Fade";
+import PeriodYears from "./components/PeriodYears/PeriodYears";
 import PeriodsControls from "./components/PeriodsControls/PeriodsControls";
 import TimePeriods from "./components/TimePeriods/TimePeriods";
 import Title from "./components/Title/Title";
-
+import { useDebounce } from "./hooks/useDebounce";
 import { data } from "./sampleData";
-import PeriodYears from "./components/PeriodYears/PeriodYears";
-import EventsSlider from "./components/EventsSlider/EventsSlider";
 
 const App = () => {
   const defaultAngle = 120;
@@ -14,6 +15,22 @@ const App = () => {
 
   const [selectedPeriod, setSelectedPeriod] = useState(0);
   const [rotateAngle, setRotateAngle] = useState(defaultAngle);
+
+  const { startYear, endYear, events } = data[selectedPeriod];
+
+  const [key, setKey] = useState(`${startYear}-${endYear}`);
+
+  useEffect(() => {
+    const newKey = `${startYear}-${endYear}`;
+
+    const counter = setTimeout(() => {
+      setKey(newKey);
+    }, 700);
+
+    return () => {
+      clearTimeout(counter);
+    };
+  }, [startYear, endYear]);
 
   const rotateTo = (order: number) => {
     setRotateAngle(defaultAngle - order * angleBetween);
@@ -34,7 +51,7 @@ const App = () => {
     setRotateAngle(defaultAngle - (selectedPeriod - 1) * angleBetween);
   };
 
-  const { startYear, endYear, events } = data[selectedPeriod];
+  const showEvents = key === `${startYear}-${endYear}`;
 
   return (
     <main className={styles.main}>
@@ -55,7 +72,11 @@ const App = () => {
         nextPeriod={nextPeriod}
       />
       <PeriodYears startYear={startYear} endYear={endYear} />
-      <EventsSlider events={events} />
+      <div className={styles.events}>
+        <Fade show={showEvents}>
+          <EventsSlider events={useDebounce(events, 500)} />
+        </Fade>
+      </div>
     </main>
   );
 };
