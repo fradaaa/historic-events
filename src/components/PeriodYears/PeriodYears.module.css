@@ -9,4 +9,8 @@
   font-weight: 700;
   line-height: 160px;
   letter-spacing: -4px;
+
+  & div:last-of-type {
+    color: #ef5da8;
+  }
 }

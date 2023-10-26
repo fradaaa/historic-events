@@ -9,6 +9,7 @@ type EventsSliderProps = {
 };
 
 const EventsSlider = ({ events }: EventsSliderProps) => {
+  // eslint-disable-next-line
   const swiperRef = useRef<any>(null);
   const swiperInstanceRef = useRef<Swiper | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);

@@ -27,3 +27,8 @@
   top: 480px;
   transform: translateY(-50%);
 }
+
+.events {
+  position: absolute;
+  bottom: 104px;
+}
