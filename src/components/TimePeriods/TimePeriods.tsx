@@ -11,8 +11,14 @@ const defaultAngle = 120;
 
 const TimePeriods = ({ periodsCount = 6 }: TimePeriodsProps) => {
   const [rotateAngle, setRotateAngle] = useState(defaultAngle);
+  const [selectedPeriod, setSelectedPeriod] = useState(1);
 
   const angleBetween = 360 / periodsCount;
+
+  const rotateTo = (order: number) => {
+    setRotateAngle(120 - (order - 1) * angleBetween);
+    setSelectedPeriod(order);
+  };
 
   const counterAngle = (angle: number) =>
     angle > 0 ? `-${angle}` : Math.abs(angle);
@@ -32,12 +38,16 @@ const TimePeriods = ({ periodsCount = 6 }: TimePeriodsProps) => {
               transform: `translate(${-x}px, ${-y}px) rotate(${counterAngle(
                 rotateAngle,
               )}deg)`,
-              position: "absolute",
             };
 
             return (
-              <div key={i} style={style} className={styles.test}>
-                <PeriodItem order={i + 1} text="Period" />
+              <div key={i} style={style} className={styles.itemWrapper}>
+                <PeriodItem
+                  order={i + 1}
+                  text="Period"
+                  selectedPeriod={selectedPeriod}
+                  rotateTo={rotateTo}
+                />
               </div>
             );
           })}
